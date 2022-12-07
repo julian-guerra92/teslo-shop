@@ -1,6 +1,14 @@
-import { BeforeInsert, BeforeUpdate, Column, Entity, PrimaryGeneratedColumn } from "typeorm";
+import {
+    BeforeInsert,
+    BeforeUpdate,
+    Column,
+    Entity,
+    OneToMany,
+    PrimaryGeneratedColumn
+} from "typeorm";
+import { ProductImage } from './';
 
-@Entity()
+@Entity({name: 'products'})
 export class Product {
 
     @PrimaryGeneratedColumn('uuid')
@@ -45,6 +53,14 @@ export class Product {
         default: []
     })
     tags: string[];
+
+    //Relación de uno a muchos con la entidad ProductImage
+    @OneToMany(
+        () => ProductImage,
+        (productImage) => productImage.product,
+        { cascade: true, eager: true} //eager habilta las relaciones en el método find
+    )
+    images?: ProductImage[];
 
     //Validación y ajuste antes de insertar el objeto a la tabla
     @BeforeInsert()
