@@ -3,12 +3,14 @@ import {
     BeforeUpdate,
     Column,
     Entity,
+    ManyToOne,
     OneToMany,
     PrimaryGeneratedColumn
 } from "typeorm";
 import { ProductImage } from './';
+import { User } from '../../auth/entities/user.entity';
 
-@Entity({name: 'products'})
+@Entity({ name: 'products' })
 export class Product {
 
     @PrimaryGeneratedColumn('uuid')
@@ -58,9 +60,16 @@ export class Product {
     @OneToMany(
         () => ProductImage,
         (productImage) => productImage.product,
-        { cascade: true, eager: true} //eager habilta las relaciones en el método find
+        { cascade: true, eager: true } //eager habilta las relaciones en el método find
     )
     images?: ProductImage[];
+
+    @ManyToOne(
+        () => User,
+        (user) => user.product,
+        { eager: true }
+    )
+    user: User
 
     //Validación y ajuste antes de insertar el objeto a la tabla
     @BeforeInsert()
