@@ -1,8 +1,11 @@
-import { Controller, Get, Post, Body, Patch, Param, Delete } from '@nestjs/common';
+import { Controller, Get} from '@nestjs/common';
+import { ApiTags } from '@nestjs/swagger';
+
 import { Auth } from 'src/auth/decorators';
 import { SeedService } from './seed.service';
 import { ValidRoles } from '../auth/interfaces/valid-roles';
 
+@ApiTags('Seed') //Decorador utilzado para etiqueta en endpoint de documentación
 @Controller('seed')
 export class SeedController {
   constructor(private readonly seedService: SeedService) {}

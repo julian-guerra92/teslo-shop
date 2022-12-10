@@ -48,6 +48,9 @@ yarn start:dev
 ```
 http://localhost:3000/api/seed
 ```
-
+8. Para la visualización de la documentación del proyecto ir al siguiente endpoint:
+```
+http://localhost:3000/api/
+```
 
 

@@ -3,11 +3,10 @@ import {
   Get,
   Post,
   Body,
-  UseGuards,
-  Req,
-  SetMetadata
+  UseGuards
 } from '@nestjs/common';
 import { AuthGuard } from '@nestjs/passport';
+import { ApiTags } from '@nestjs/swagger';
 
 import { AuthService } from './auth.service';
 import { Auth, GetUser, RawHeaders, RoleProtected } from './decorators';
@@ -16,6 +15,7 @@ import { User } from './entities/user.entity';
 import { UserRoleGuard } from './guards/user-role/user-role.guard';
 import { ValidRoles } from './interfaces/valid-roles';
 
+@ApiTags('Auth') //Decorador utilzado para etiqueta en endpoint de documentación
 @Controller('auth')
 export class AuthController {
 
