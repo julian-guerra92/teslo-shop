@@ -54,9 +54,17 @@ http://localhost:3000/api/
 ```
 
 # Production notes:
-1. Para la ejecución de la imagen de docker:
+
+1. Para la ejecución de la imagen de docker en modo de producción:
 ```
 docker compose -f docker-compose.prod.yaml build
+```
+2. Para la construcción de imagenes haciendo uso de builx:
+```
+docker buildx build \
+ --platform linux/amd64,linux/arm64 \
+ -t julianguerra92/teslo-shop-backend:latest \
+ --push .
 ```
 
 

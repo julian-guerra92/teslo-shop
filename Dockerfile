@@ -1,4 +1,14 @@
 
+# Etapa de Desarrollo:
+FROM node:19-alpine3.15 as dev
+# cd app ---> nos movemos a este directorio
+WORKDIR /app
+# copìar ---> copia los archivos de mi proyecto al destino deseado (WORKDIR)
+COPY package.json ./
+# Instalar las dependencias
+RUN yarn install
+CMD [ "yarn","start:dev" ]
+
 # Etapa 1: Dependencias de desarrollo
 FROM node:19-alpine3.15 as dev-dependencies
 # cd app ---> nos movemos a este directorio
@@ -47,13 +57,3 @@ COPY --from=prod-dependencies /app/node_modules ./node_modules
 COPY --from=builder /app/dist ./dist
 # Comando run de la imagen
 CMD [ "node","dist/main.js" ]
-
-# Etapa de Desarrollo:
-FROM node:19-alpine3.15 as dev
-# cd app ---> nos movemos a este directorio
-WORKDIR /app
-# copìar ---> copia los archivos de mi proyecto al destino deseado (WORKDIR)
-COPY package.json ./
-# Instalar las dependencias
-RUN yarn install
-CMD [ "yarn","start:dev" ]
