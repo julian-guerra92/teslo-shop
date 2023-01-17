@@ -53,4 +53,10 @@ http://localhost:3000/api/seed
 http://localhost:3000/api/
 ```
 
+# Production notes:
+1. Para la ejecución de la imagen de docker:
+```
+docker compose -f docker-compose.prod.yaml build
+```
+
 

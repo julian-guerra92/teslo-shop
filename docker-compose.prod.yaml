@@ -8,9 +8,7 @@ services:
       context: .
       target: ${STAGE}
       dockerfile: Dockerfile
-    volumes:
-      - .:/app/
-      - /app/node_modules
+    image: julianguerra92/teslo-shop-backend:2.0.0
     container_name: nest-app
     ports:
       - ${PORT}:${PORT}

@@ -22,7 +22,7 @@ export class SeedService {
     await this.deleteTables();
     const adminUser = await this.insertUSers();
     await this.insertNewProducts(adminUser);
-    return 'Seed executed!';
+    return 'Seed executed con Docker!!!';
   }
 
   private async deleteTables() {
