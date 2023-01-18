@@ -67,4 +67,11 @@ docker buildx build \
  --push .
 ```
 
+3. Para la construcción de imágenes sin uso de buildx (usar sudo en caso de de requerirlo en sistemas linux):
+
+```
+sudo docker build \
+-t registry.digitalocean.com/julian-guerra92-dev/teslo-shop-backend:1.2.0 .
+```
+
 
